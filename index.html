@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>報名現況儀表板 - 敏捷思維研討會</title>
+    <title>敏捷思維導入教學行政研討會 - 報名表</title>
     <!-- 載入 Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -17,390 +17,378 @@
             min-height: 100vh;
         }
 
-        /* 儀表板卡片風格 */
-        .dashboard-card {
-            background-color: white;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* 活潑的按鈕樣式 */
+        .lively-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(100, 0, 150, 0.2);
+            background-image: linear-gradient(to right, #9333ea, #ec4899); /* 夢幻漸變色按鈕 */
         }
-        .dashboard-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px rgba(100, 0, 150, 0.1);
+        .lively-button:hover {
+            box-shadow: 0 6px 12px rgba(100, 0, 150, 0.3);
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* 讓輸入框帶有圓角和淺色邊框 */
+        .input-style {
+            border-color: #fce4ec; /* 淺粉色邊框 */
+            transition: border-color 0.3s;
+        }
+        .input-style:focus {
+            border-color: #a855f7; /* 聚焦時的夢幻紫色 */
+            box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
         }
         
-        /* 職稱圖表專用：確保滾動和可視性 */
-        #titleChartContainer {
-            overflow-y: auto; /* 允許垂直滾動 */
-            max-height: 400px; /* 限制圖表最大高度 */
+        /* 圓形的報到圖示 */
+        .agenda-icon {
+            background-color: #ecfdf5; /* 淺綠色圓點 */
+            color: #059669; /* 深綠色文字 */
         }
     </style>
 </head>
 <body class="dreamy-gradient p-4 md:p-8">
 
-    <!-- 儀表板容器 -->
-    <div id="dashboard-container" class="max-w-6xl mx-auto">
+    <div id="app-container" class="max-w-4xl mx-auto">
         
-        <!-- 標題區塊 -->
+        <!-- 標題區塊：活潑、有活力的風格 -->
         <header class="text-center mb-10 p-6 bg-white bg-opacity-80 rounded-3xl shadow-xl backdrop-blur-sm">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 mb-2">
-                敏捷思維研討會 - 報名現況儀表板
+                敏捷思維導入教學行政
             </h1>
-            <p class="text-lg font-semibold text-gray-700">
-                即時數據分析 (上次更新時間: <span id="lastUpdated" class="font-normal text-purple-500">載入中...</span>)
-            </p>
-            <p class="text-sm text-red-500 mt-2">
-                <!-- 提示已移除，因為 URL 已設定 -->
+            <h2 class="text-xl sm:text-2xl font-semibold text-gray-700">
+                Hello World 2025 開發者大會心得分享暨實務研討會
+            </h2>
+            <p class="text-sm text-purple-400 mt-2">
+                以開發者精神，優化行政流程！
             </p>
         </header>
-        
-        <!-- 💡 已替換為您提供的 Web App URL -->
-        <script>
-            // 修正 URL 中的拼寫錯誤，確保與您提供的網址一致
-            const DASHBOARD_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyyhJHROihrtShavm_fhfgBKi66UtzN9Bfk5RuulFBBaOo5CE4utWaWGCLYP6bTSLRbog/exec'; 
-        </script>
 
-        <!-- 數據總覽 (三格卡片) -->
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <!-- 主要內容與表單容器 -->
+        <div class="bg-white bg-opacity-90 p-6 md:p-10 rounded-3xl shadow-2xl space-y-12">
             
-            <!-- 總報名人數 -->
-            <div class="dashboard-card p-6 rounded-2xl shadow-lg border-b-4 border-purple-500">
-                <p class="text-sm font-medium text-gray-500">總報名人數</p>
-                <p id="totalCount" class="text-5xl font-extrabold text-purple-600 mt-1">...</p>
-                <div class="flex items-center text-sm text-gray-400 mt-2">
-                    <svg class="w-4 h-4 mr-1 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-5a3 3 0 01-3-3V9a2 2 0 00-2-2h-3L9 4m0 0a2 2 0 00-2-2h-3v7l3 3m0 0h5m-5 0v5m3-3v3m-3-3v3m3 3h5m-5 0v3m3-3v3"></path></svg>
-                    <span>所有單位合計</span>
+            <!-- 活動資訊 (內容與上一版本相同，保持一致) -->
+            <section class="border-b border-purple-200 pb-8">
+                <h3 class="text-3xl font-bold mb-6 text-purple-600 border-l-4 border-pink-500 pl-4">
+                    活動資訊
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <span class="text-pink-500 text-2xl mr-3">✨</span>
+                            <p>
+                                <span class="font-semibold block">目的:</span> 分享「敏捷開發(Agile)」的核心精神,並共同探討如何將其應用於教學部的日常行政、專案管理中,以提升團隊效率與應變能力。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="space-y-3 p-4 bg-purple-50 rounded-xl shadow-inner">
+                        <div class="flex items-center">
+                            <span class="text-pink-500 font-bold text-lg w-16">日期:</span>
+                            <p class="text-lg">2025年11月30日 (日)</p>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-pink-500 font-bold text-lg w-16">時間:</span>
+                            <p class="text-lg">14:00 - 17:00 (共3小時)</p>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-pink-500 font-bold text-lg w-16">地點:</span>
+                            <p class="text-lg">第五醫療大樓5F552會議室</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- 茶水點心需求 -->
-            <div class="dashboard-card p-6 rounded-2xl shadow-lg border-b-4 border-pink-500">
-                <p class="text-sm font-medium text-gray-500">茶水點心需求人數 (是)</p>
-                <p id="refreshmentsCount" class="text-5xl font-extrabold text-pink-600 mt-1">...</p>
-                <div class="flex items-center text-sm text-gray-400 mt-2">
-                    <svg class="w-4 h-4 mr-1 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                    <span>餐點準備參考數據</span>
-                </div>
-            </div>
+            <!-- 活動議程 (內容與上一版本相同，保持一致) -->
+            <section class="border-b border-purple-200 pb-8">
+                <h3 class="text-3xl font-bold mb-6 text-purple-600 border-l-4 border-pink-500 pl-4">
+                    活動議程
+                </h3>
+                <ol class="space-y-6">
+                    <!-- 項目 1 -->
+                    <li class="flex items-start">
+                        <div class="agenda-icon w-8 h-8 flex items-center justify-center rounded-full flex-shrink-0 mt-1 mr-4 font-bold text-sm">
+                            1
+                        </div>
+                        <div>
+                            <p class="font-semibold text-lg text-gray-800">14:00 - 14:15 | 報到與暖身 (Check-in)</p>
+                            <p class="text-sm text-gray-600">領取名牌、享用茶點,並透過簡單的破冰遊戲認識跨部門夥伴。</p>
+                        </div>
+                    </li>
+                    <!-- 項目 2 -->
+                    <li class="flex items-start">
+                        <div class="agenda-icon w-8 h-8 flex items-center justify-center rounded-full flex-shrink-0 mt-1 mr-4 font-bold text-sm">
+                            2
+                        </div>
+                        <div>
+                            <p class="font-semibold text-lg text-gray-800">14:15 - 15:00 | Session 1: 擁抱變化的勇氣</p>
+                            <p class="text-sm text-gray-600">從 Hello World 2025 開發者大會看見趨勢。什麼是 Agile?為什麼原本用於軟體開發的思維,能解決行政工作的痛點?</p>
+                        </div>
+                    </li>
+                    <!-- 項目 3 -->
+                    <li class="flex items-start">
+                        <div class="agenda-icon w-8 h-8 flex items-center justify-center rounded-full flex-shrink-0 mt-1 mr-4 font-bold text-sm bg-yellow-100 text-yellow-800">
+                            3
+                        </div>
+                        <div>
+                            <p class="font-semibold text-lg text-gray-800">15:00 - 15:10 | 中場休息 (Break)</p>
+                            <p class="text-sm text-gray-600">大腦充電與自由交流時間。</p>
+                        </div>
+                    </li>
+                    <!-- 項目 4 -->
+                    <li class="flex items-start">
+                        <div class="agenda-icon w-8 h-8 flex items-center justify-center rounded-full flex-shrink-0 mt-1 mr-4 font-bold text-sm">
+                            4
+                        </div>
+                        <div>
+                            <p class="font-semibold text-lg text-gray-800">15:10 - 16:00 | Session 2: 行政實務應用案例</p>
+                            <p class="text-sm text-gray-600">不再被 Deadline 追著跑!分享如何利用「視覺化看板 (Kanban)」與「迭代 (Iteration)」來優化 QCC 專案與 OSCE 考試籌備流程。</p>
+                        </div>
+                    </li>
+                    <!-- 項目 5 -->
+                    <li class="flex items-start">
+                        <div class="agenda-icon w-8 h-8 flex items-center justify-center rounded-full flex-shrink-0 mt-1 mr-4 font-bold text-sm bg-red-100 text-red-800">
+                            5
+                        </div>
+                        <div>
+                            <p class="font-semibold text-lg text-gray-800">16:00 - 16:40 | Workshop: 敏捷實戰演練</p>
+                            <p class="text-sm text-gray-600">分組工作坊:針對目前的行政痛點,實際演練一次「站立會議 (Daily Stand-up)」與「回顧會議 (Retrospective)」。</p>
+                        </div>
+                    </li>
+                    <!-- 項目 6 -->
+                    <li class="flex items-start">
+                        <div class="agenda-icon w-8 h-8 flex items-center justify-center rounded-full flex-shrink-0 mt-1 mr-4 font-bold text-sm">
+                            6
+                        </div>
+                        <div>
+                            <p class="font-semibold text-lg text-gray-800">16:40 - 17:00 | 總結與問答 (Q&A)</p>
+                            <p class="text-sm text-gray-600">開放提問與講師總結。</p>
+                        </div>
+                    </li>
+                </ol>
+            </section>
 
-            <!-- 平均報名進度 (Placeholder) -->
-            <div class="dashboard-card p-6 rounded-2xl shadow-lg border-b-4 border-teal-500">
-                <p class="text-sm font-medium text-gray-500">平均報名速度</p>
-                <p id="averageSpeed" class="text-5xl font-extrabold text-teal-600 mt-1">N/A</p>
-                <div class="flex items-center text-sm text-gray-400 mt-2">
-                    <svg class="w-4 h-4 mr-1 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <span>報名開放至今平均每日報名數</span>
-                </div>
-            </div>
-        </section>
+            <!-- 報名表單 -->
+            <section>
+                <h3 class="text-3xl font-bold mb-6 text-purple-600 border-l-4 border-pink-500 pl-4">
+                    基本資料與報名
+                </h3>
+                <!-- form action/method attribute not needed as we use fetch in JS -->
+                <form id="registrationForm" class="space-y-6"> 
+                    
+                    <!-- 姓名 -->
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">姓名 <span class="text-red-500">*</span></label>
+                        <input type="text" id="name" name="name" required
+                            class="input-style mt-1 block w-full rounded-xl border p-3 focus:outline-none focus:ring-2 focus:ring-purple-300"
+                            placeholder="請輸入您的姓名">
+                    </div>
 
-        <!-- 圖表與列表區塊 -->
-        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- 電子郵件 -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">電子郵件 (Email) <span class="text-red-500">*</span></label>
+                        <input type="email" id="email" name="email" required
+                            class="input-style mt-1 block w-full rounded-xl border p-3 focus:outline-none focus:ring-2 focus:ring-purple-300"
+                            placeholder="請輸入常用 Email">
+                    </div>
 
-            <!-- 職稱分佈圖 -->
-            <div class="dashboard-card p-6 rounded-2xl shadow-lg space-y-4">
-                <h2 class="text-xl font-bold text-gray-700 border-b pb-2">📊 職稱分佈</h2>
-                <div id="titleChartContainer" class="min-h-[250px] flex flex-col justify-center items-center">
-                    <!-- 圖表將由 JS 動態生成 -->
-                    <p id="titleChartLoading" class="text-gray-500">載入職稱數據中...</p>
-                </div>
-            </div>
+                    <!-- 單位 -->
+                    <div>
+                        <label for="unit" class="block text-sm font-medium text-gray-700 mb-1">單位 <span class="text-red-500">*</span></label>
+                        <input type="text" id="unit" name="unit" required
+                            class="input-style mt-1 block w-full rounded-xl border p-3 focus:outline-none focus:ring-2 focus:ring-purple-300"
+                            placeholder="請輸入所屬單位/部門">
+                    </div>
 
-            <!-- 最新報名名單 -->
-            <div class="dashboard-card p-6 rounded-2xl shadow-lg">
-                <h2 class="text-xl font-bold text-gray-700 border-b pb-2 mb-4">📜 最新 5 筆報名</h2>
-                <ul id="latestRegistrations" class="space-y-3">
-                    <li class="text-gray-500">載入最新名單中...</li>
-                </ul>
-                <p id="latestRegistrationError" class="text-red-500 hidden mt-2 text-sm">無法載入最新名單。</p>
-            </div>
-            
-            <!-- 會前提問列表 -->
-            <div class="lg:col-span-2 dashboard-card p-6 rounded-2xl shadow-lg">
-                <h2 class="text-xl font-bold text-gray-700 border-b pb-2 mb-4">💬 會前提問 / 痛點蒐集</h2>
-                <div id="preQuestionList" class="space-y-4">
-                    <p class="text-gray-500">載入會前提問中...</p>
-                </div>
-                <p id="preQuestionError" class="text-red-500 hidden mt-2 text-sm">無法載入提問。</p>
-            </div>
+                    <!-- 職稱 (必填) -->
+                    <div class="pt-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">職稱 (必填) <span class="text-red-500">*</span></label>
+                        <div class="flex flex-wrap gap-4" onchange="toggleOtherInput()">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="title" value="醫師" required class="form-radio text-pink-500 focus:ring-pink-500" />
+                                <span class="ml-2 text-gray-700">醫師</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="title" value="護理師" class="form-radio text-pink-500 focus:ring-pink-500" />
+                                <span class="ml-2 text-gray-700">護理師</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="title" value="醫事人員" class="form-radio text-pink-500 focus:ring-pink-500" />
+                                <span class="ml-2 text-gray-700">醫事人員</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="title" value="行政人員" class="form-radio text-pink-500 focus:ring-pink-500" />
+                                <span class="ml-2 text-gray-700">行政人員</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" id="titleOther" name="title" value="其他" class="form-radio text-pink-500 focus:ring-pink-500" />
+                                <span class="ml-2 text-gray-700">其他</span>
+                            </label>
+                        </div>
+                        <!-- 其他職稱輸入框 (預設隱藏) -->
+                        <div id="otherTitleContainer" class="mt-3 hidden">
+                            <input type="text" id="otherTitle" name="otherTitle"
+                                class="input-style mt-1 block w-full rounded-xl border p-3 focus:outline-none focus:ring-2 focus:ring-purple-300"
+                                placeholder="請填寫您的職稱">
+                        </div>
+                    </div>
 
-        </section>
-        
+                    <!-- 是否需要茶水點心 -->
+                    <div class="pt-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">是否需要茶水點心? <span class="text-red-500">*</span></label>
+                        <div class="flex flex-wrap gap-4">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="refreshments" value="是" required class="form-radio text-pink-500 focus:ring-pink-500" />
+                                <span class="ml-2 text-gray-700">是 (需要)</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="refreshments" value="否" class="form-radio text-pink-500 focus:ring-pink-500" />
+                                <span class="ml-2 text-gray-700">否 (不需要)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 會前提問 -->
+                    <div>
+                        <label for="preQuestion" class="block text-sm font-medium text-gray-700 mb-1">
+                            會前提問: 您目前在行政工作上遇到的困難?或最想了解關於「敏捷」的哪個部分?
+                        </label>
+                        <textarea id="preQuestion" name="preQuestion" rows="4"
+                            class="input-style mt-1 block w-full rounded-xl border p-3 focus:outline-none focus:ring-2 focus:ring-purple-300"
+                            placeholder="請留下您的問題或想討論的主題..."></textarea>
+                    </div>
+
+                    <!-- 報名按鈕 -->
+                    <div class="pt-6 text-center">
+                        <button type="submit" id="submitButton" class="lively-button text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg w-full md:w-auto">
+                            🔥 立即報名參加研討會
+                        </button>
+                    </div>
+
+                    <!-- 訊息顯示區塊 (用於替代 alert()) -->
+                    <div id="messageBox" class="text-center p-3 rounded-xl hidden text-sm font-medium"></div>
+                </form>
+            </section>
+        </div>
+
+        <!-- 頁尾資訊 -->
+        <footer class="mt-10 text-center text-gray-600 text-sm p-4">
+            <p class="mb-2">
+                主辦單位: 奇美醫院教學部 | 聯絡人: 盧英云 (分機57425)
+            </p>
+            <p class="text-xs text-gray-500 p-2 bg-white bg-opacity-70 rounded-lg inline-block">
+                本報名資料僅供本次研討會聯繫與餐點統計使用。
+            </p>
+        </footer>
+
     </div>
 
-    <!-- JavaScript 邏輯 -->
     <script>
-        // === 數據處理與渲染邏輯 ===
+        // 設定 Apps Script Web App 的部署 URL
+        // 已經替換為您提供的網址
+        const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyyhJHROihrtShavm_fhfgBKi66UtzN9Bfk5RuulFBBaOo5CE4utWaWGCLYP6bTSLRbog/exec'; 
+        
+        const submitButton = document.getElementById('submitButton');
+        const messageBox = document.getElementById('messageBox');
 
-        /**
-         * 轉換日期時間格式
-         * @param {string | Date} dateValue - 日期值
-         * @returns {string} 格式化後的日期字串
-         */
-        function formatDateTime(dateValue) {
-            try {
-                const date = new Date(dateValue);
-                if (isNaN(date)) return 'N/A';
-                
-                const year = date.getFullYear();
-                const month = String(date.getMonth() + 1).padStart(2, '0');
-                const day = String(date.getDate()).padStart(2, '0');
-                const hours = String(date.getHours()).padStart(2, '0');
-                const minutes = String(date.getMinutes()).padStart(2, '0');
-                
-                return `${year}/${month}/${day} ${hours}:${minutes}`;
-            } catch (e) {
-                return 'N/A';
+        // 輔助函式：切換「其他」職稱輸入框的顯示
+        function toggleOtherInput() {
+            const otherRadio = document.getElementById('titleOther');
+            const otherContainer = document.getElementById('otherTitleContainer');
+            const otherInput = document.getElementById('otherTitle');
+
+            if (otherRadio.checked) {
+                otherContainer.classList.remove('hidden');
+                otherInput.setAttribute('required', 'required');
+            } else {
+                otherContainer.classList.add('hidden');
+                otherInput.removeAttribute('required');
+                otherInput.value = ''; 
             }
-        }
-
-        /**
-         * 計算報名數據的統計資訊
-         * @param {Array<Object>} data - 原始報名數據陣列
-         * @returns {Object} 統計結果
-         */
-        function calculateStats(data) {
-            const stats = {
-                total: data.length,
-                refreshmentsYes: 0,
-                titleCounts: {},
-                latestEntries: data.slice(0, 5), // 取前五筆資料
-                questions: [],
-            };
-
-            data.forEach(item => {
-                // 1. 茶水點心計算
-                if (item.refreshments === '是') {
-                    stats.refreshmentsYes++;
-                }
-
-                // 2. 職稱分佈計算
-                // 確保職稱非空，若空則使用「未填寫」
-                const title = item.title && item.title.trim() ? item.title.trim() : '未填寫';
-                stats.titleCounts[title] = (stats.titleCounts[title] || 0) + 1;
-                
-                // 3. 會前提問
-                if (item.preQuestion && item.preQuestion.trim()) {
-                    stats.questions.push({
-                        name: item.name,
-                        unit: item.unit,
-                        question: item.preQuestion.trim(),
-                        timestamp: item.timestamp,
-                    });
-                }
-            });
-
-            return stats;
-        }
-
-        /**
-         * 渲染數據總覽卡片
-         * @param {Object} stats - 統計結果
-         */
-        function renderSummary(stats) {
-            if(document.getElementById('totalCount')) {
-                document.getElementById('totalCount').textContent = stats.total;
-            }
-            if(document.getElementById('refreshmentsCount')) {
-                document.getElementById('refreshmentsCount').textContent = stats.refreshmentsYes;
-            }
-            
-            // 由於沒有報名開始時間數據，平均速度暫時顯示為 N/A
-            if(document.getElementById('averageSpeed')) {
-                document.getElementById('averageSpeed').textContent = 'N/A';
-            }
-            
-            // 更新最後更新時間
-            if(document.getElementById('lastUpdated')) {
-                document.getElementById('lastUpdated').textContent = formatDateTime(new Date());
-            }
-        }
-
-        /**
-         * 渲染職稱分佈圖 (修正版：完整呈現所有職稱並確保名稱不被截斷)
-         * @param {Object} titleCounts - 職稱統計結果
-         * @param {number} total - 總人數
-         */
-        function renderTitleChart(titleCounts, total) {
-            const container = document.getElementById('titleChartContainer');
-            if (!container) return;
-            
-            container.innerHTML = ''; // 清除 loading 訊息
-
-            if (total === 0) {
-                container.innerHTML = '<p class="text-gray-500 text-lg">目前尚無報名資料。</p>';
-                return;
-            }
-
-            // 1. 統計並排序數據 (數量降序排列)
-            const sortedTitles = Object.entries(titleCounts)
-                .sort(([, countA], [, countB]) => countB - countA);
-            
-            // 定義一組顏色循環
-            const colors = ['#a855f7', '#ec4899', '#10b981', '#3b82f6', '#f97316', '#64748b', '#06b6d4', '#eab308']; 
-            
-            // 2. 渲染長條圖
-            sortedTitles.forEach(([title, count], index) => {
-                // 長條寬度改為佔總報名人數的百分比
-                const barWidthPercentage = (count / total) * 100;
-                const color = colors[index % colors.length];
-
-                // **修正點：將職稱欄位寬度增加到 w-1/3 (約 33.3%)，並移除 'truncate' 類，確保完整顯示。**
-                const barHtml = `
-                    <div class="flex items-center text-sm py-2">
-                        <!-- 職稱名稱 (修正為 w-1/3，移除 truncate) -->
-                        <div class="w-1/3 font-medium text-gray-800 mr-3 pr-1 flex-shrink-0" title="${title}">
-                            ${title} 
-                        </div>
-                        <!-- 長條圖容器 -->
-                        <div class="flex-grow">
-                            <div class="h-6 rounded-full bg-gray-200">
-                                <div style="width: ${barWidthPercentage > 0.5 ? barWidthPercentage : 0.5}%; background-color: ${color}; min-width: ${count > 0 ? '4px' : '0'};" 
-                                     class="h-6 text-xs text-white flex items-center justify-end pr-2 rounded-full font-bold transition-all duration-500 ease-out shadow-md"
-                                     title="${title}: ${count} 人 (${barWidthPercentage.toFixed(1)}%)">
-                                    ${count} <span class="text-[10px] ml-1 opacity-80">(${barWidthPercentage.toFixed(1)}%)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                container.insertAdjacentHTML('beforeend', barHtml);
-            });
         }
         
-        /**
-         * 渲染最新報名列表
-         * @param {Array<Object>} latestEntries - 最新報名數據
-         */
-        function renderLatestRegistrations(latestEntries) {
-            const listContainer = document.getElementById('latestRegistrations');
-            if (!listContainer) return;
-
-            listContainer.innerHTML = '';
+        // 輔助函式：顯示訊息 (取代 alert())
+        function showMessage(message, type = 'success') {
+            messageBox.textContent = message;
+            messageBox.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-green-100', 'text-green-700');
             
-            if (latestEntries.length === 0) {
-                listContainer.innerHTML = '<li class="text-gray-500">目前尚無報名資料。</li>';
-                return;
+            if (type === 'error') {
+                messageBox.classList.add('bg-red-100', 'text-red-700');
+            } else {
+                messageBox.classList.add('bg-green-100', 'text-green-700');
             }
-
-            latestEntries.forEach(item => {
-                // 確保職稱非空
-                const title = item.title && item.title.trim() ? item.title.trim() : '未填寫';
-                
-                const listItem = `
-                    <li class="p-3 bg-purple-50 rounded-lg shadow-sm border-l-4 border-pink-400">
-                        <p class="font-semibold text-gray-800">${item.name} <span class="text-xs font-normal text-pink-500 ml-1">(${title})</span></p>
-                        <p class="text-xs text-gray-500">${item.unit}</p>
-                        <p class="text-xs text-gray-400 mt-1">報名時間: ${formatDateTime(item.timestamp)}</p>
-                    </li>
-                `;
-                listContainer.insertAdjacentHTML('beforeend', listItem);
-            });
-        }
-        
-        /**
-         * 渲染會前提問列表
-         * @param {Array<Object>} questions - 會前提問數據
-         */
-        function renderQuestions(questions) {
-            const questionContainer = document.getElementById('preQuestionList');
-            if (!questionContainer) return;
             
-            questionContainer.innerHTML = '';
-
-            if (questions.length === 0) {
-                questionContainer.innerHTML = '<p class="text-gray-500">目前沒有會前提問。</p>';
-                return;
-            }
-
-            questions.forEach((q, index) => {
-                const questionHtml = `
-                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 shadow-sm">
-                        <p class="font-medium text-gray-800 italic">“${q.question}”</p>
-                        <p class="text-xs text-gray-600 mt-2 text-right">
-                            — ${q.name} (${q.unit})
-                            <span class="ml-2 text-gray-400">${formatDateTime(q.timestamp)}</span>
-                        </p>
-                    </div>
-                `;
-                questionContainer.insertAdjacentHTML('beforeend', questionHtml);
-            });
+            // 訊息顯示 5 秒後自動隱藏
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 8000);
         }
 
+        // 輔助函式：切換提交按鈕的狀態
+        function setSubmitStatus(isLoading) {
+            submitButton.disabled = isLoading;
+            submitButton.textContent = isLoading ? '🚀 正在提交中...' : '🔥 立即報名參加研討會';
+            submitButton.classList.toggle('opacity-50', isLoading);
+        }
 
-        /**
-         * 主控函式: 獲取資料並渲染儀表板
-         */
-        async function fetchAndRenderDashboard() {
-            // 由於之前的錯誤，在嘗試獲取資料之前，先設置載入狀態，確保元素存在
-            const titleChartLoading = document.getElementById('titleChartLoading');
-            const lastUpdated = document.getElementById('lastUpdated');
-
-            if (titleChartLoading) titleChartLoading.textContent = '正在從 Google Sheets 載入數據...';
-            if (lastUpdated) lastUpdated.textContent = '連線中...';
-
-            if (DASHBOARD_WEB_APP_URL.includes('YOUR_DEPLOYED_DASHBOARD_WEB_APP_URL_HERE')) {
-                if (titleChartLoading) titleChartLoading.textContent = '🚨 請先部署 Code_Dashboard.gs 並更新 URL！';
+        // 表單提交處理
+        document.getElementById('registrationForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); 
+            
+            // 由於已替換為實際網址，故移除此檢查，保留給未來替換使用
+            /*
+            if (GAS_WEB_APP_URL === 'YOUR_DEPLOYED_WEB_APP_URL') {
+                showMessage('🚨 錯誤：請先部署 Apps Script 並將 Web App URL 貼到 GAS_WEB_APP_URL 變數中！', 'error');
                 return;
             }
+            */
+
+            setSubmitStatus(true); // 設置為提交中
+
+            const form = event.target;
+            const data = new FormData(form);
             
-            // 在 Web App URL 後面新增時間戳記，幫助避免快取問題
-            const fetchUrl = `${DASHBOARD_WEB_APP_URL}?_=${new Date().getTime()}`;
+            // 💡 關鍵步驟 1: 在客戶端將 'title' 和 'otherTitle' 整合為單一 'title' 欄位
+            const selectedTitle = data.get('title');
+            if (selectedTitle === '其他') {
+                const otherTitleValue = data.get('otherTitle');
+                if (otherTitleValue) {
+                    data.set('title', otherTitleValue); // 使用其他職稱的內容替換 'title'
+                }
+            }
+            data.delete('otherTitle'); // 移除多餘的欄位
 
             try {
-                // 嘗試使用 fetch API 獲取數據，並明確指定 mode: 'cors'
-                const response = await fetch(fetchUrl, { mode: 'cors' }); 
-                
-                // 檢查 HTTP 狀態碼
-                if (!response.ok) {
-                    throw new Error(`HTTP 錯誤! 狀態碼: ${response.status}`);
-                }
+                // 💡 關鍵步驟 2: 使用 fetch 將 FormData 提交到 Apps Script Web App
+                const response = await fetch(GAS_WEB_APP_URL, {
+                    method: 'POST',
+                    body: data, // 直接發送 FormData
+                    // Apps Script 部署為 Web App 時，不需要設定 Content-Type，瀏覽器會自動設為 multipart/form-data
+                });
 
-                const result = await response.json();
+                // Apps Script 回傳的內容是 JSON 格式的文字，需要先轉為文字再解析
+                const text = await response.text();
+                const result = JSON.parse(text);
 
-                if (result.status === 'success') {
-                    // 將資料反轉，讓最新的在前面。Apps Script 的 data 可能是最早的在前面。
-                    const rawData = result.data.reverse(); 
-                    const stats = calculateStats(rawData);
-                    
-                    renderSummary(stats);
-                    // 呼叫修正後的函式
-                    renderTitleChart(stats.titleCounts, stats.total); 
-                    renderLatestRegistrations(stats.latestEntries);
-                    renderQuestions(stats.questions);
-                    
+                if (result.result === 'success') {
+                    showMessage(`✅ 恭喜 ${data.get('name')}！報名已成功送出！資料已匯入 Google Sheets。`, 'success');
+                    form.reset(); 
+                    toggleOtherInput(); 
                 } else {
-                    throw new Error(result.message || 'Apps Script 回傳錯誤狀態。');
+                    throw new Error(result.message || 'Apps Script 提交資料時發生未知錯誤。');
                 }
 
             } catch (error) {
-                console.error('儀表板載入失敗:', error);
-                const errorMessage = `❌ 載入失敗: ${error.message}。請檢查 Apps Script 是否已部署、URL 是否正確，以及 Apps Script 的「存取權」是否設定為「所有人」。`;
-                
-                // 顯示錯誤訊息在各區塊 (增加存在檢查)
-                if (document.getElementById('titleChartContainer')) {
-                    document.getElementById('titleChartContainer').innerHTML = `<p class="text-red-500">${errorMessage}</p>`;
-                }
-                if (document.getElementById('latestRegistrations')) {
-                    document.getElementById('latestRegistrations').innerHTML = `<li class="text-red-500">${errorMessage}</li>`;
-                }
-                if (document.getElementById('preQuestionList')) {
-                    document.getElementById('preQuestionList').innerHTML = `<p class="text-red-500">${errorMessage}</p>`;
-                }
-                if (lastUpdated) lastUpdated.textContent = '載入失敗';
+                console.error('Submission Error:', error);
+                showMessage(`❌ 提交失敗：${error.message}。請檢查 Apps Script 部署是否正確，或是否允許「所有人」存取。`, 'error');
+            } finally {
+                setSubmitStatus(false); // 結束提交狀態
             }
-        }
+        });
 
-        // 頁面載入時執行
+        // 初始化：確保頁面載入時「其他」輸入框狀態正確
         window.onload = function() {
-            // 確保元素存在，預先設定載入狀態，避免 'Cannot set properties of null'
-            if(document.getElementById('totalCount')) document.getElementById('totalCount').textContent = '載入中...';
-            if(document.getElementById('refreshmentsCount')) document.getElementById('refreshmentsCount').textContent = '載入中...';
-            if(document.getElementById('averageSpeed')) document.getElementById('averageSpeed').textContent = 'N/A';
-            if(document.getElementById('lastUpdated')) document.getElementById('lastUpdated').textContent = '連線中...';
-            
-            fetchAndRenderDashboard();
-            // 每 60 秒自動更新一次數據
-            setInterval(fetchAndRenderDashboard, 60000); 
+            toggleOtherInput();
         };
+
     </script>
 </body>
 </html>
