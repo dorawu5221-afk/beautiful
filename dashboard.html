@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>報名現況儀表板 - 敏捷思維研討會</title>
+    <!-- 載入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 設定字體為 Inter (預設) 並確保中文字體顯示正常 */
+        html { font-family: 'Inter', 'Noto Sans TC', sans-serif; }
+        
+        /* 定義夢幻漸變背景 */
+        .dreamy-gradient {
+            background-color: #f7f3ff; /* Fallback color */
+            background-image: linear-gradient(to bottom right, #e0f7fa, #fce4ec, #f3e5f5);
+            min-height: 100vh;
+        }
+
+        /* 儀表板卡片風格 */
+        .dashboard-card {
+            background-color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px rgba(100, 0, 150, 0.1);
+        }
+        
+        /* 職稱圖表專用：確保滾動和可視性 */
+        #titleChartContainer {
+            overflow-y: auto; /* 允許垂直滾動 */
+            max-height: 400px; /* 限制圖表最大高度 */
+        }
+    </style>
+</head>
+<body class="dreamy-gradient p-4 md:p-8">
+
+    <!-- 儀表板容器 -->
+    <div id="dashboard-container" class="max-w-6xl mx-auto">
+        
+        <!-- 標題區塊 -->
+        <header class="text-center mb-10 p-6 bg-white bg-opacity-80 rounded-3xl shadow-xl backdrop-blur-sm">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 mb-2">
+                敏捷思維研討會 - 報名現況儀表板
+            </h1>
+            <p class="text-lg font-semibold text-gray-700">
+                即時數據分析 (上次更新時間: <span id="lastUpdated" class="font-normal text-purple-500">載入中...</span>)
+            </p>
+            <p class="text-sm text-red-500 mt-2">
+                <!-- 提示已移除，因為 URL 已設定 -->
+            </p>
+        </header>
+        
+        <!-- 💡 已替換為您提供的 Web App URL -->
+        <script>
+            // 修正 URL 中的拼寫錯誤，確保與您提供的網址一致
+            const DASHBOARD_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyyhJHROihrtShavm_fhfgBKi66UtzN9Bfk5RuulFBBaOo5CE4utWaWGCLYP6bTSLRbog/exec'; 
+        </script>
+
+        <!-- 數據總覽 (三格卡片) -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            
+            <!-- 總報名人數 -->
+            <div class="dashboard-card p-6 rounded-2xl shadow-lg border-b-4 border-purple-500">
+                <p class="text-sm font-medium text-gray-500">總報名人數</p>
+                <p id="totalCount" class="text-5xl font-extrabold text-purple-600 mt-1">...</p>
+                <div class="flex items-center text-sm text-gray-400 mt-2">
+                    <svg class="w-4 h-4 mr-1 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-5a3 3 0 01-3-3V9a2 2 0 00-2-2h-3L9 4m0 0a2 2 0 00-2-2h-3v7l3 3m0 0h5m-5 0v5m3-3v3m-3-3v3m3 3h5m-5 0v3m3-3v3"></path></svg>
+                    <span>所有單位合計</span>
+                </div>
+            </div>
+
+            <!-- 茶水點心需求 -->
+            <div class="dashboard-card p-6 rounded-2xl shadow-lg border-b-4 border-pink-500">
+                <p class="text-sm font-medium text-gray-500">茶水點心需求人數 (是)</p>
+                <p id="refreshmentsCount" class="text-5xl font-extrabold text-pink-600 mt-1">...</p>
+                <div class="flex items-center text-sm text-gray-400 mt-2">
+                    <svg class="w-4 h-4 mr-1 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    <span>餐點準備參考數據</span>
+                </div>
+            </div>
+
+            <!-- 平均報名進度 (Placeholder) -->
+            <div class="dashboard-card p-6 rounded-2xl shadow-lg border-b-4 border-teal-500">
+                <p class="text-sm font-medium text-gray-500">平均報名速度</p>
+                <p id="averageSpeed" class="text-5xl font-extrabold text-teal-600 mt-1">N/A</p>
+                <div class="flex items-center text-sm text-gray-400 mt-2">
+                    <svg class="w-4 h-4 mr-1 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>報名開放至今平均每日報名數</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 圖表與列表區塊 -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <!-- 職稱分佈圖 -->
+            <div class="dashboard-card p-6 rounded-2xl shadow-lg space-y-4">
+                <h2 class="text-xl font-bold text-gray-700 border-b pb-2">📊 職稱分佈</h2>
+                <div id="titleChartContainer" class="min-h-[250px] flex flex-col justify-center items-center">
+                    <!-- 圖表將由 JS 動態生成 -->
+                    <p id="titleChartLoading" class="text-gray-500">載入職稱數據中...</p>
+                </div>
+            </div>
+
+            <!-- 最新報名名單 -->
+            <div class="dashboard-card p-6 rounded-2xl shadow-lg">
+                <h2 class="text-xl font-bold text-gray-700 border-b pb-2 mb-4">📜 最新 5 筆報名</h2>
+                <ul id="latestRegistrations" class="space-y-3">
+                    <li class="text-gray-500">載入最新名單中...</li>
+                </ul>
+                <p id="latestRegistrationError" class="text-red-500 hidden mt-2 text-sm">無法載入最新名單。</p>
+            </div>
+            
+            <!-- 會前提問列表 -->
+            <div class="lg:col-span-2 dashboard-card p-6 rounded-2xl shadow-lg">
+                <h2 class="text-xl font-bold text-gray-700 border-b pb-2 mb-4">💬 會前提問 / 痛點蒐集</h2>
+                <div id="preQuestionList" class="space-y-4">
+                    <p class="text-gray-500">載入會前提問中...</p>
+                </div>
+                <p id="preQuestionError" class="text-red-500 hidden mt-2 text-sm">無法載入提問。</p>
+            </div>
+
+        </section>
+        
+    </div>
+
+    <!-- JavaScript 邏輯 -->
+    <script>
+        // === 數據處理與渲染邏輯 ===
+
+        /**
+         * 轉換日期時間格式
+         * @param {string | Date} dateValue - 日期值
+         * @returns {string} 格式化後的日期字串
+         */
+        function formatDateTime(dateValue) {
+            try {
+                const date = new Date(dateValue);
+                if (isNaN(date)) return 'N/A';
+                
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                const hours = String(date.getHours()).padStart(2, '0');
+                const minutes = String(date.getMinutes()).padStart(2, '0');
+                
+                return `${year}/${month}/${day} ${hours}:${minutes}`;
+            } catch (e) {
+                return 'N/A';
+            }
+        }
+
+        /**
+         * 計算報名數據的統計資訊
+         * @param {Array<Object>} data - 原始報名數據陣列
+         * @returns {Object} 統計結果
+         */
+        function calculateStats(data) {
+            const stats = {
+                total: data.length,
+                refreshmentsYes: 0,
+                titleCounts: {},
+                latestEntries: data.slice(0, 5), // 取前五筆資料
+                questions: [],
+            };
+
+            data.forEach(item => {
+                // 1. 茶水點心計算
+                if (item.refreshments === '是') {
+                    stats.refreshmentsYes++;
+                }
+
+                // 2. 職稱分佈計算
+                // 確保職稱非空，若空則使用「未填寫」
+                const title = item.title && item.title.trim() ? item.title.trim() : '未填寫';
+                stats.titleCounts[title] = (stats.titleCounts[title] || 0) + 1;
+                
+                // 3. 會前提問
+                if (item.preQuestion && item.preQuestion.trim()) {
+                    stats.questions.push({
+                        name: item.name,
+                        unit: item.unit,
+                        question: item.preQuestion.trim(),
+                        timestamp: item.timestamp,
+                    });
+                }
+            });
+
+            return stats;
+        }
+
+        /**
+         * 渲染數據總覽卡片
+         * @param {Object} stats - 統計結果
+         */
+        function renderSummary(stats) {
+            if(document.getElementById('totalCount')) {
+                document.getElementById('totalCount').textContent = stats.total;
+            }
+            if(document.getElementById('refreshmentsCount')) {
+                document.getElementById('refreshmentsCount').textContent = stats.refreshmentsYes;
+            }
+            
+            // 由於沒有報名開始時間數據，平均速度暫時顯示為 N/A
+            if(document.getElementById('averageSpeed')) {
+                document.getElementById('averageSpeed').textContent = 'N/A';
+            }
+            
+            // 更新最後更新時間
+            if(document.getElementById('lastUpdated')) {
+                document.getElementById('lastUpdated').textContent = formatDateTime(new Date());
+            }
+        }
+
+        /**
+         * 渲染職稱分佈圖 (修正版：完整呈現所有職稱並確保名稱不被截斷)
+         * @param {Object} titleCounts - 職稱統計結果
+         * @param {number} total - 總人數
+         */
+        function renderTitleChart(titleCounts, total) {
+            const container = document.getElementById('titleChartContainer');
+            if (!container) return;
+            
+            container.innerHTML = ''; // 清除 loading 訊息
+
+            if (total === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-lg">目前尚無報名資料。</p>';
+                return;
+            }
+
+            // 1. 統計並排序數據 (數量降序排列)
+            const sortedTitles = Object.entries(titleCounts)
+                .sort(([, countA], [, countB]) => countB - countA);
+            
+            // 定義一組顏色循環
+            const colors = ['#a855f7', '#ec4899', '#10b981', '#3b82f6', '#f97316', '#64748b', '#06b6d4', '#eab308']; 
+            
+            // 2. 渲染長條圖
+            sortedTitles.forEach(([title, count], index) => {
+                // 長條寬度改為佔總報名人數的百分比
+                const barWidthPercentage = (count / total) * 100;
+                const color = colors[index % colors.length];
+
+                // **修正點：將職稱欄位寬度增加到 w-1/3 (約 33.3%)，並移除 'truncate' 類，確保完整顯示。**
+                const barHtml = `
+                    <div class="flex items-center text-sm py-2">
+                        <!-- 職稱名稱 (修正為 w-1/3，移除 truncate) -->
+                        <div class="w-1/3 font-medium text-gray-800 mr-3 pr-1 flex-shrink-0" title="${title}">
+                            ${title} 
+                        </div>
+                        <!-- 長條圖容器 -->
+                        <div class="flex-grow">
+                            <div class="h-6 rounded-full bg-gray-200">
+                                <div style="width: ${barWidthPercentage > 0.5 ? barWidthPercentage : 0.5}%; background-color: ${color}; min-width: ${count > 0 ? '4px' : '0'};" 
+                                     class="h-6 text-xs text-white flex items-center justify-end pr-2 rounded-full font-bold transition-all duration-500 ease-out shadow-md"
+                                     title="${title}: ${count} 人 (${barWidthPercentage.toFixed(1)}%)">
+                                    ${count} <span class="text-[10px] ml-1 opacity-80">(${barWidthPercentage.toFixed(1)}%)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', barHtml);
+            });
+        }
+        
+        /**
+         * 渲染最新報名列表
+         * @param {Array<Object>} latestEntries - 最新報名數據
+         */
+        function renderLatestRegistrations(latestEntries) {
+            const listContainer = document.getElementById('latestRegistrations');
+            if (!listContainer) return;
+
+            listContainer.innerHTML = '';
+            
+            if (latestEntries.length === 0) {
+                listContainer.innerHTML = '<li class="text-gray-500">目前尚無報名資料。</li>';
+                return;
+            }
+
+            latestEntries.forEach(item => {
+                // 確保職稱非空
+                const title = item.title && item.title.trim() ? item.title.trim() : '未填寫';
+                
+                const listItem = `
+                    <li class="p-3 bg-purple-50 rounded-lg shadow-sm border-l-4 border-pink-400">
+                        <p class="font-semibold text-gray-800">${item.name} <span class="text-xs font-normal text-pink-500 ml-1">(${title})</span></p>
+                        <p class="text-xs text-gray-500">${item.unit}</p>
+                        <p class="text-xs text-gray-400 mt-1">報名時間: ${formatDateTime(item.timestamp)}</p>
+                    </li>
+                `;
+                listContainer.insertAdjacentHTML('beforeend', listItem);
+            });
+        }
+        
+        /**
+         * 渲染會前提問列表
+         * @param {Array<Object>} questions - 會前提問數據
+         */
+        function renderQuestions(questions) {
+            const questionContainer = document.getElementById('preQuestionList');
+            if (!questionContainer) return;
+            
+            questionContainer.innerHTML = '';
+
+            if (questions.length === 0) {
+                questionContainer.innerHTML = '<p class="text-gray-500">目前沒有會前提問。</p>';
+                return;
+            }
+
+            questions.forEach((q, index) => {
+                const questionHtml = `
+                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 shadow-sm">
+                        <p class="font-medium text-gray-800 italic">“${q.question}”</p>
+                        <p class="text-xs text-gray-600 mt-2 text-right">
+                            — ${q.name} (${q.unit})
+                            <span class="ml-2 text-gray-400">${formatDateTime(q.timestamp)}</span>
+                        </p>
+                    </div>
+                `;
+                questionContainer.insertAdjacentHTML('beforeend', questionHtml);
+            });
+        }
+
+
+        /**
+         * 主控函式: 獲取資料並渲染儀表板
+         */
+        async function fetchAndRenderDashboard() {
+            // 由於之前的錯誤，在嘗試獲取資料之前，先設置載入狀態，確保元素存在
+            const titleChartLoading = document.getElementById('titleChartLoading');
+            const lastUpdated = document.getElementById('lastUpdated');
+
+            if (titleChartLoading) titleChartLoading.textContent = '正在從 Google Sheets 載入數據...';
+            if (lastUpdated) lastUpdated.textContent = '連線中...';
+
+            if (DASHBOARD_WEB_APP_URL.includes('YOUR_DEPLOYED_DASHBOARD_WEB_APP_URL_HERE')) {
+                if (titleChartLoading) titleChartLoading.textContent = '🚨 請先部署 Code_Dashboard.gs 並更新 URL！';
+                return;
+            }
+            
+            // 在 Web App URL 後面新增時間戳記，幫助避免快取問題
+            const fetchUrl = `${DASHBOARD_WEB_APP_URL}?_=${new Date().getTime()}`;
+
+            try {
+                // 嘗試使用 fetch API 獲取數據，並明確指定 mode: 'cors'
+                const response = await fetch(fetchUrl, { mode: 'cors' }); 
+                
+                // 檢查 HTTP 狀態碼
+                if (!response.ok) {
+                    throw new Error(`HTTP 錯誤! 狀態碼: ${response.status}`);
+                }
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    // 將資料反轉，讓最新的在前面。Apps Script 的 data 可能是最早的在前面。
+                    const rawData = result.data.reverse(); 
+                    const stats = calculateStats(rawData);
+                    
+                    renderSummary(stats);
+                    // 呼叫修正後的函式
+                    renderTitleChart(stats.titleCounts, stats.total); 
+                    renderLatestRegistrations(stats.latestEntries);
+                    renderQuestions(stats.questions);
+                    
+                } else {
+                    throw new Error(result.message || 'Apps Script 回傳錯誤狀態。');
+                }
+
+            } catch (error) {
+                console.error('儀表板載入失敗:', error);
+                const errorMessage = `❌ 載入失敗: ${error.message}。請檢查 Apps Script 是否已部署、URL 是否正確，以及 Apps Script 的「存取權」是否設定為「所有人」。`;
+                
+                // 顯示錯誤訊息在各區塊 (增加存在檢查)
+                if (document.getElementById('titleChartContainer')) {
+                    document.getElementById('titleChartContainer').innerHTML = `<p class="text-red-500">${errorMessage}</p>`;
+                }
+                if (document.getElementById('latestRegistrations')) {
+                    document.getElementById('latestRegistrations').innerHTML = `<li class="text-red-500">${errorMessage}</li>`;
+                }
+                if (document.getElementById('preQuestionList')) {
+                    document.getElementById('preQuestionList').innerHTML = `<p class="text-red-500">${errorMessage}</p>`;
+                }
+                if (lastUpdated) lastUpdated.textContent = '載入失敗';
+            }
+        }
+
+        // 頁面載入時執行
+        window.onload = function() {
+            // 確保元素存在，預先設定載入狀態，避免 'Cannot set properties of null'
+            if(document.getElementById('totalCount')) document.getElementById('totalCount').textContent = '載入中...';
+            if(document.getElementById('refreshmentsCount')) document.getElementById('refreshmentsCount').textContent = '載入中...';
+            if(document.getElementById('averageSpeed')) document.getElementById('averageSpeed').textContent = 'N/A';
+            if(document.getElementById('lastUpdated')) document.getElementById('lastUpdated').textContent = '連線中...';
+            
+            fetchAndRenderDashboard();
+            // 每 60 秒自動更新一次數據
+            setInterval(fetchAndRenderDashboard, 60000); 
+        };
+    </script>
+</body>
+</html>
